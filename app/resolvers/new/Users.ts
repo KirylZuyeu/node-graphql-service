@@ -15,7 +15,7 @@ import {
     }
   
     @Query(() => [User])
-    async getAllUsers() {
+    async returnAllUsers() {
       return await UserModel.find();
     }
   

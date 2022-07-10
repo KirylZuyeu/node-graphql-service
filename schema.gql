@@ -28,10 +28,10 @@ type Mutation {
 }
 
 type Query {
-  getAllUsers: [User!]!
   getGenreById(id: String!): Genre!
   getUserById(id: String!): User!
   returnAllGenres: [Genre!]!
+  returnAllUsers: [User!]!
 }
 
 """The User"""
