@@ -1,14 +1,19 @@
-import { InputType, Field } from 'type-graphql';
-import { Order } from '../../entities/Order';
+import { InputType, Field, ID } from 'type-graphql';
+import { IsEmail } from 'class-validator';
+import { Genre } from '../../entities_m/Genre';
 
 @InputType()
-export class OrderInput implements Partial<Order> {
+export class GenreInput implements Partial<Genre> {
   @Field()
-  user_id: String;
+  firstName: String
 
   @Field()
-  payde: Boolean;
+  lastName: String
 
   @Field()
-  date: Date;
+  password: String
+
+  @Field()
+  @IsEmail()
+  email: String;
 }

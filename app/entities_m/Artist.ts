@@ -1,19 +1,43 @@
 import { ObjectType, Field, ID } from 'type-graphql';
 import { prop as Property, getModelForClass } from '@typegoose/typegoose';
 
-import { Ref } from '../types';
-
-import { Product } from './Product';
-
-@ObjectType({ description: 'The  Cart model' })
-export class Cart {
+@ObjectType({ description: 'The Artist' })
+export class Artist {
+  [x: string]: any;
   @Field(() => ID)
   id: string;
 
-  @Field((_type) => String)
-  @Property({ ref: Product, required: true })
-  products: Ref<Product>;
-  _doc: any;
+  @Field()
+  @Property()
+  firstName: string;
+
+  @Field()
+  @Property()
+  secondName: string;
+
+  @Field()
+  @Property()
+  middleName: string;
+
+  @Field()
+  @Property()
+  birthDate: string;
+
+  @Field()
+  @Property()
+  birthPlace: string;
+
+  @Field()
+  @Property()
+  country: string;
+
+  @Field()
+  @Property()
+  bandsIds: string[]
+
+  @Field()
+  @Property()
+  instruments: string[];
 }
 
-export const CartModel = getModelForClass(Cart);
+export const ArtistModel = getModelForClass(Artist);

@@ -12,9 +12,9 @@ import { CartResolver } from './resolvers/Cart';
 import { OrderResolver } from './resolvers/Order';
 
 import { UsersResolver } from './resolvers/new/Users';
+import { GenresResolver } from './resolvers/new/Genres';
 import { ArtistsResolver } from './resolvers/new/Artists';
 import { BandsResolver } from './resolvers/new/Bands';
-import { GenresResolver } from './resolvers/new/Genres';
 import { TracksResolver } from './resolvers/new/Tracks';
 import { FavouritesResolver } from './resolvers/new/Favourites';
 import { AlbumsResolver } from './resolvers/new/Albums';
@@ -31,9 +31,9 @@ const main = async () => {
       OrderResolver,
 
       UsersResolver,
+      GenresResolver,
       ArtistsResolver,
       BandsResolver,
-      GenresResolver,
       TracksResolver,
       FavouritesResolver,
       AlbumsResolver,

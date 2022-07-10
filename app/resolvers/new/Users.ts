@@ -7,7 +7,7 @@ import {
     Root,
   } from 'type-graphql';
   import { User, UserModel } from '../../entities_m/User';
-  import { UserInput } from '../types_m/user-input';
+  import { UserInput } from '../types_m/User-input';
   
   @Resolver((_of) => User)
   export class UsersResolver {
