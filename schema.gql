@@ -3,6 +3,23 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
+"""The Band"""
+type Band {
+  genre: Genre!
+  genres: String!
+  id: ID!
+  name: String!
+  origin: String!
+  website: String!
+}
+
+input BandInput {
+  genres: String!
+  name: String!
+  origin: String!
+  website: String!
+}
+
 """The Genre"""
 type Genre {
   country: String!
@@ -20,17 +37,22 @@ input GenreInput {
 }
 
 type Mutation {
+  createBand(data: BandInput!): Band!
   createGenre(data: GenreInput!): Genre!
+  deleteBand(id: String!): String!
   deleteGenre(id: String!): String!
   registerUser(data: UserInput!): User!
+  updateBand(data: BandInput!, id: String!): Band!
   updateGenre(data: GenreInput!, id: String!): Genre!
 }
 
 type Query {
   getGenreById(id: String!): Genre!
   getUserById(id: String!): User!
+  returnAllBand: [Band!]!
   returnAllGenres: [Genre!]!
   returnAllUsers: [User!]!
+  returnSingleBand(id: String!): Band!
 }
 
 """The User"""
