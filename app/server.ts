@@ -5,12 +5,6 @@ import 'reflect-metadata';
 import { buildSchema } from 'type-graphql';
 import { connect } from 'mongoose';
 
-import { UserResolver } from './resolvers/User';
-import { ProductResolver } from './resolvers/Product';
-import { CategoriesResolver } from './resolvers/Categories';
-import { CartResolver } from './resolvers/Cart';
-import { OrderResolver } from './resolvers/Order';
-
 import { UsersResolver } from './resolvers/new/Users';
 import { GenresResolver } from './resolvers/new/Genres';
 import { ArtistsResolver } from './resolvers/new/Artists';
@@ -24,12 +18,6 @@ import { AlbumsResolver } from './resolvers/new/Albums';
 const main = async () => {
   const schema = await buildSchema({
     resolvers: [
-      CategoriesResolver,
-      ProductResolver,
-      UserResolver,
-      CartResolver,
-      OrderResolver,
-
       UsersResolver,
       GenresResolver,
       ArtistsResolver,

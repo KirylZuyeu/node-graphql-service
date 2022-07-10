@@ -5,15 +5,15 @@ import { User } from '../../entities_m/User';
 @InputType()
 export class UserInput implements Partial<User> {
   @Field()
-  firstName: String
+  firstName: string
 
   @Field()
-  lastName: String
+  lastName: string
 
   @Field()
-  password: String
+  password: string
 
   @Field()
   @IsEmail()
-  email: String;
+  email: string;
 }

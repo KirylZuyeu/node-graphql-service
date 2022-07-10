@@ -13,11 +13,11 @@ export class Band {
 
   @Field()
   @Property()
-  name: String
+  name: string
 
   @Field()
   @Property()
-  origin: String
+  origin: string
 
   @Field()
   @Property()
@@ -25,7 +25,7 @@ export class Band {
 
   @Field()
   @Property()
-  website: String
+  website: string
 
   @Field()
   @Property()

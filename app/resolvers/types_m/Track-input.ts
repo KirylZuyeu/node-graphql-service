@@ -4,7 +4,7 @@ import { Track } from '../../entities_m/Track';
 @InputType()
 export class TrackInput implements Partial<Track> {
   @Field()
-  title: String!
+  title: string
 
   @Field()
   album: Album

@@ -9,19 +9,19 @@ export class Genre {
 
   @Field()
   @Property()
-  firstName: String;
+  firstName: string;
 
   @Field()
   @Property()
-  lastName: String;
+  lastName: string;
 
   @Field()
   @Property()
-  password: String;
+  password: string;
 
   @Field()
   @Property({ required: true })
-  email: String;
+  email: string;
 }
 
 export const GenreModel = getModelForClass(Genre);

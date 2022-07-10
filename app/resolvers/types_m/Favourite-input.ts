@@ -4,16 +4,16 @@ import { Favourite } from '../../entities_m/Favourite';
 @InputType()
 export class FavouriteInput implements Partial<Favourite> {
   @Field()
-  name: String
+  name: string
 
   @Field()
-  origin: String
+  origin: string
 
   @Field()
   members: [Member]
 
   @Field()
-  website: String
+  website: string
 
   @Field()
   genres: [Genre]

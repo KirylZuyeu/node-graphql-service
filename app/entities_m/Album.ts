@@ -9,7 +9,7 @@ export class Album {
 
   @Field()
   @Property()
-  name: String
+  name: string
   
   @Field()
   @Property()
@@ -33,7 +33,7 @@ export class Album {
 
   @Field()
   @Property()
-  image: String
+  image: string
 }
 
 export const AlbumModel = getModelForClass(Album);

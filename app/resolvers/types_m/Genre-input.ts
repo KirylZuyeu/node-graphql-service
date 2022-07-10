@@ -5,15 +5,15 @@ import { Genre } from '../../entities_m/Genre';
 @InputType()
 export class GenreInput implements Partial<Genre> {
   @Field()
-  firstName: String
+  firstName: string
 
   @Field()
-  lastName: String
+  lastName: string
 
   @Field()
-  password: String
+  password: string
 
   @Field()
   @IsEmail()
-  email: String;
+  email: string;
 }

@@ -4,7 +4,7 @@ import { Album } from '../../entities_m/Album';
 @InputType()
 export class AlbumInput implements Partial<Album> {
   @Field()
-  name: String
+  name: string
 
   @Field()
   released: number
@@ -22,5 +22,5 @@ export class AlbumInput implements Partial<Album> {
   genres: [Genre]
 
   @Field()
-  image: String
+  image: string
 }

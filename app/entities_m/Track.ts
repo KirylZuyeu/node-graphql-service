@@ -9,7 +9,7 @@ export class Track {
 
   @Field()
   @Property()
-  title: String!
+  title: string
 
   @Field()
   @Property()
@@ -25,11 +25,11 @@ export class Track {
 
   @Field()
   @Property()
-  duration: Int
+  duration: number
 
   @Field()
   @Property()
-  released: Int
+  released: number
 
   @Field()
   @Property()

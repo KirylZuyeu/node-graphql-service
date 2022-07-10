@@ -4,16 +4,16 @@ import { Band } from '../../entities_m/Band';
 @InputType()
 export class BandInput implements Partial<Band> {
   @Field()
-  name: String
+  name: string
 
   @Field()
-  origin: String
+  origin: string
 
   @Field()
   members: [Member]
 
   @Field()
-  website: String
+  website: string
 
   @Field()
   genres: [Genre]
