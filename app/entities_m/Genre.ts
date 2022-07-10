@@ -8,19 +8,19 @@ export class Genre {
 
   @Field()
   @Property()
-  name: string
+  name: string;
   
   @Field()
   @Property()
-  description: string
+  description: string;
   
   @Field()
   @Property()
-  country: string
+  country: string;
   
   @Field()
   @Property()
-  year: number
+  year: number;
 }
 
 export const GenreModel = getModelForClass(Genre);

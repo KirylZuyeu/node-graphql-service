@@ -15,16 +15,15 @@ type Genre {
 input GenreInput {
   country: String!
   description: String!
-  id: String!
   name: String!
   year: Float!
 }
 
 type Mutation {
   createGenre(data: GenreInput!): Genre!
-  deleteGenre(id: String!): Boolean!
+  deleteGenre(id: String!): String!
   registerUser(data: UserInput!): User!
-  updatePost(data: GenreInput!): Boolean!
+  updateGenre(data: GenreInput!, id: String!): Genre!
 }
 
 type Query {

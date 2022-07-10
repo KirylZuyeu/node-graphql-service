@@ -34,15 +34,16 @@ import {
       return genre;
     }
   
-    @Mutation(() => Boolean)
+    @Mutation(() => String)
     async deleteGenre(@Arg('id') id: string) {
       await GenreModel.deleteOne({ id });
-      return true;
+      return `Genre was deleted`;
     }
   
-    @Mutation(() => Boolean)
-    async updatePost(
-      @Arg('data') { id, name, description, country, year }: GenreInput
+    @Mutation(() => Genre)
+    async updateGenre(
+      @Arg('id') id: string,
+      @Arg('data') { name, description, country, year }: GenreInput
     ) {
       const genre = await GenreModel.findByIdAndUpdate(id, {
           name,
