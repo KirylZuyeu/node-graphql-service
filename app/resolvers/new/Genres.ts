@@ -2,9 +2,7 @@ import {
     Resolver,
     Mutation,
     Arg,
-    Query,
-    FieldResolver,
-    Root,
+    Query
   } from 'type-graphql';
   import { Genre, GenreModel } from '../../entities_m/Genre';
   import { GenreInput } from '../types_m/Genre-input';
@@ -12,39 +10,51 @@ import {
   @Resolver((_of) => Genre)
   export class GenresResolver {
     @Query((_returns) => Genre, { nullable: false })
-    async returnSingleUser(@Arg('id') id: string) {
+    async getGenreById(@Arg('id') id: string) {
       return await GenreModel.findById({ _id: id });
     }
   
     @Query(() => [Genre])
-    async returnAllUsers() {
+    async returnAllGenres() {
       return await GenreModel.find();
     }
   
     @Mutation(() => Genre)
-    async createUser(
-      @Arg('data') { username, email, cart_id }: GenreInput
+    async createGenre(
+      @Arg('data') { name, description, country, year }: GenreInput
     ): Promise<Genre> {
-      const user = (
+      const genre = (
         await GenreModel.create({
-          username,
-          email,
-          cart_id,
+          name,
+          description,
+          country,
+          year
         })
       ).save();
-      return user;
+      return genre;
     }
   
     @Mutation(() => Boolean)
-    async deleteUser(@Arg('id') id: string) {
+    async deleteGenre(@Arg('id') id: string) {
       await GenreModel.deleteOne({ id });
       return true;
     }
   
-    @FieldResolver((_type) => Cart)
-    async cart(@Root() user: Genre): Promise<Cart> {
-      console.log(user, 'userr!');
-      return (await GenreModel.findById(user._doc.cart_id))!;
+    @Mutation(() => Boolean)
+    async updatePost(
+      @Arg('data') { id, name, description, country, year }: GenreInput
+    ) {
+      const genre = await GenreModel.findByIdAndUpdate(id, {
+          name,
+          description,
+          country,
+          year
+        }, 
+        {new: true})
+      ;
+
+      return genre;
     }
+
   }
   

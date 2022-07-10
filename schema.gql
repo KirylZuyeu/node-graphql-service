@@ -3,106 +3,49 @@
 # !!!   DO NOT MODIFY THIS FILE BY YOURSELF   !!!
 # -----------------------------------------------
 
-"""The  Cart model"""
-type Cart {
-  id: ID!
-  product: Product!
-  products: String!
-}
-
-input CartInput {
-  products: ID!
-}
-
-"""The Categories model"""
-type Categories {
+"""The Genre"""
+type Genre {
+  country: String!
   description: String!
   id: ID!
   name: String!
+  year: Float!
 }
 
-input CategoriesInput {
+input GenreInput {
+  country: String!
   description: String!
+  id: String!
   name: String!
+  year: Float!
 }
-
-"""
-The javascript `Date` as string. Type represents date and time as the ISO Date string.
-"""
-scalar DateTime
 
 type Mutation {
-  createCart(data: CartInput!): Cart!
-  createCategory(data: CategoriesInput!): Categories!
-  createOrder(data: OrderInput!): Order!
-  createProduct(data: ProductInput!): Product!
-  createUser(data: UserInput!): User!
-  deleteCart(id: String!): Boolean!
-  deleteCategory(id: String!): Boolean!
-  deleteOrder(id: String!): Boolean!
-  deleteProduct(id: String!): Boolean!
-  deleteUser(id: String!): Boolean!
-}
-
-"""The Order model"""
-type Order {
-  date: DateTime!
-  id: ID!
-  payde: Boolean!
-  products: Product!
-  user_id: String!
-}
-
-input OrderInput {
-  date: DateTime!
-  payde: Boolean!
-  user_id: String!
-}
-
-"""The Product model"""
-type Product {
-  category: Categories!
-  category_id: String!
-  color: String!
-  description: String!
-  id: ID!
-  name: String!
-  price: Int!
-  stock: Int!
-}
-
-input ProductInput {
-  category_id: String!
-  color: String!
-  description: String!
-  name: String!
-  price: Float!
-  stock: Float!
+  createGenre(data: GenreInput!): Genre!
+  deleteGenre(id: String!): Boolean!
+  registerUser(data: UserInput!): User!
+  updatePost(data: GenreInput!): Boolean!
 }
 
 type Query {
-  returnAllCart: [Cart!]!
-  returnAllCategories: [Categories!]!
-  returnAllOrder: [Order!]!
-  returnAllProduct: [Product!]!
-  returnAllUsers: [User!]!
-  returnSingleCart(id: String!): Cart!
-  returnSingleCategory(id: String!): Categories!
-  returnSingleProduct(id: String!): Order!
-  returnSingleUser(id: String!): User!
+  getAllUsers: [User!]!
+  getGenreById(id: String!): Genre!
+  getUserById(id: String!): User!
+  returnAllGenres: [Genre!]!
 }
 
-"""The User model"""
+"""The User"""
 type User {
-  cart: Cart!
-  cart_id: String!
   email: String!
+  firstName: String!
   id: ID!
-  username: String!
+  lastName: String!
+  password: String!
 }
 
 input UserInput {
-  cart_id: ID!
   email: String!
-  username: String!
+  firstName: String!
+  lastName: String!
+  password: String!
 }

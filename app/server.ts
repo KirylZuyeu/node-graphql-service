@@ -7,24 +7,13 @@ import { connect } from 'mongoose';
 
 import { UsersResolver } from './resolvers/new/Users';
 import { GenresResolver } from './resolvers/new/Genres';
-import { ArtistsResolver } from './resolvers/new/Artists';
-import { BandsResolver } from './resolvers/new/Bands';
-import { TracksResolver } from './resolvers/new/Tracks';
-import { FavouritesResolver } from './resolvers/new/Favourites';
-import { AlbumsResolver } from './resolvers/new/Albums';
-
 
 
 const main = async () => {
   const schema = await buildSchema({
     resolvers: [
       UsersResolver,
-      GenresResolver,
-      ArtistsResolver,
-      BandsResolver,
-      TracksResolver,
-      FavouritesResolver,
-      AlbumsResolver,
+      GenresResolver
     ],
     emitSchemaFile: true,
     validate: false,

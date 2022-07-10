@@ -3,25 +3,24 @@ import { prop as Property, getModelForClass } from '@typegoose/typegoose';
 
 @ObjectType({ description: 'The Genre' })
 export class Genre {
-  [x: string]: any;
   @Field(() => ID)
   id: string;
 
   @Field()
   @Property()
-  firstName: string;
-
+  name: string
+  
   @Field()
   @Property()
-  lastName: string;
-
+  description: string
+  
   @Field()
   @Property()
-  password: string;
-
+  country: string
+  
   @Field()
-  @Property({ required: true })
-  email: string;
+  @Property()
+  year: number
 }
 
 export const GenreModel = getModelForClass(Genre);
