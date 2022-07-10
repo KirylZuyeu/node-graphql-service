@@ -1,18 +1,26 @@
-import { InputType, Field, ID } from 'type-graphql';
-import { Length, IsEmail } from 'class-validator';
-import { User } from '../../entities/User';
-import { ObjectId } from 'mongodb';
+import { InputType, Field } from 'type-graphql';
+import { Track } from '../../entities_m/Track';
 
 @InputType()
-export class UserInput implements Partial<User> {
+export class TrackInput implements Partial<Track> {
   @Field()
-  @Length(1, 255)
-  username: String;
+  title: String!
 
   @Field()
-  @IsEmail()
-  email: String;
+  album: Album
 
-  @Field(() => ID)
-  cart_id: ObjectId;
+  @Field()
+  artists: [Artist]
+
+  @Field()
+  bands: [Band]
+
+  @Field()
+  duration: number
+
+  @Field()
+  released: number
+
+  @Field()
+  genres: [Genre]
 }
