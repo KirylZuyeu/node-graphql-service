@@ -1,13 +1,20 @@
 import { InputType, Field } from 'type-graphql';
-import { Length } from 'class-validator';
-import { Categories } from '../../entities/Categories';
+import { Band } from '../../entities_m/Band';
 
 @InputType()
-export class CategoriesInput implements Partial<Categories> {
+export class BandInput implements Partial<Band> {
   @Field()
-  name: string;
+  name: String
 
   @Field()
-  @Length(1, 255)
-  description: String;
+  origin: String
+
+  @Field()
+  members: [Member]
+
+  @Field()
+  website: String
+
+  @Field()
+  genres: [Genre]
 }
