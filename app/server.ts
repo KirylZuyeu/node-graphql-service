@@ -11,6 +11,16 @@ import { CategoriesResolver } from './resolvers/Categories';
 import { CartResolver } from './resolvers/Cart';
 import { OrderResolver } from './resolvers/Order';
 
+import { ArtistsResolver } from './resolvers/new/Artists';
+import { UsersResolver } from './resolvers/new/Users';
+import { BandsResolver } from './resolvers/new/Bands';
+import { GenresResolver } from './resolvers/new/Genres';
+import { TracksResolver } from './resolvers/new/Tracks';
+import { FavouritesResolver } from './resolvers/new/Favourites';
+import { AlbumsResolver } from './resolvers/new/Albums';
+
+
+
 const main = async () => {
   const schema = await buildSchema({
     resolvers: [
@@ -19,6 +29,14 @@ const main = async () => {
       UserResolver,
       CartResolver,
       OrderResolver,
+
+      ArtistsResolver,
+      UsersResolver,
+      BandsResolver,
+      GenresResolver,
+      TracksResolver,
+      FavouritesResolver,
+      AlbumsResolver,
     ],
     emitSchemaFile: true,
     validate: false,
