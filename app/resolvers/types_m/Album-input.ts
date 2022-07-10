@@ -1,30 +1,26 @@
 import { InputType, Field } from 'type-graphql';
-import { Product } from '../../entities/Product';
-import { ObjectId } from 'mongodb';
+import { Album } from '../../entities_m/Album';
 
 @InputType()
-export class AlbumInput implements Partial<Product> {
+export class AlbumInput implements Partial<Album> {
   @Field()
-  name: String;
-
-  @Field()
-  released: number;
+  name: String
 
   @Field()
-  image: String;
+  released: number
 
-  @Field(() => String)
-  artists: ObjectId
+  @Field()
+  artists: [Artist]
 
-  @Field(() => String)
-  bands: ObjectId
+  @Field()
+  bands: [Band]
 
-  @Field(() => String)
-  tracks: ObjectId
+  @Field()
+  tracks: [Track]
 
-  @Field(() => String)
-  genres: ObjectId
+  @Field()
+  genres: [Genre]
 
-  @Field(() => String)
-  category_id: ObjectId;
+  @Field()
+  image: String
 }

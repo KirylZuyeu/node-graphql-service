@@ -1,48 +1,49 @@
 import {
-    Resolver,
-    Mutation,
-    Arg,
-    Query,
-    FieldResolver,
-    Root,
-  } from 'type-graphql';
-  import { A, CartModel } from '../entities/Cart';
-  import { CartInput } from './types/cart-input';
-  
-  import { Product, ProductModel } from '../entities/Product';
-  
-  @Resolver((_of) => Cart)
-  export class CartResolver {
-    @Query((_returns) => Cart, { nullable: false })
-    async returnSingleCart(@Arg('id') id: string) {
-      return await CartModel.findById({ _id: id });
-    }
-  
-    @Query(() => [Cart])
-    async returnAllCart() {
-      return await CartModel.find();
-    }
-  
-    @Mutation(() => Cart)
-    async createCart(@Arg('data') { products }: CartInput): Promise<Cart> {
-      const cart = (
-        await CartModel.create({
-          products,
-        })
-      ).save();
-      return cart;
-    }
-  
-    @Mutation(() => Boolean)
-    async deleteCart(@Arg('id') id: string) {
-      await CartModel.deleteOne({ id });
-      return true;
-    }
-  
-    @FieldResolver((_type) => Product)
-    async product(@Root() cart: Cart): Promise<Product> {
-      console.log(cart, 'cart!');
-      return (await ProductModel.findById(cart._doc.products))!;
-    }
+  Resolver,
+  Mutation,
+  Arg,
+  Query,
+  FieldResolver,
+  Root,
+} from 'type-graphql';
+import { Album, AlbumModel } from '../../entities_m/Album';
+import { AlbumInput } from '../types_m/Album-input';
+
+@Resolver((_of) => Album)
+export class AlbumsResolver {
+  @Query((_returns) => Album, { nullable: false })
+  async returnSingleUser(@Arg('id') id: string) {
+    return await AlbumModel.findById({ _id: id });
   }
-  
+
+  @Query(() => [Album])
+  async returnAllUsers() {
+    return await AlbumModel.find();
+  }
+
+  @Mutation(() => Album)
+  async createUser(
+    @Arg('data') { username, email, cart_id }: AlbumInput
+  ): Promise<Album> {
+    const user = (
+      await AlbumModel.create({
+        username,
+        email,
+        cart_id,
+      })
+    ).save();
+    return user;
+  }
+
+  @Mutation(() => Boolean)
+  async deleteUser(@Arg('id') id: string) {
+    await AlbumModel.deleteOne({ id });
+    return true;
+  }
+
+  @FieldResolver((_type) => Cart)
+  async cart(@Root() user: Album): Promise<Cart> {
+    console.log(user, 'userr!');
+    return (await CartModel.findById(user._doc.cart_id))!;
+  }
+}
