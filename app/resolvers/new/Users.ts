@@ -2,9 +2,7 @@ import {
     Resolver,
     Mutation,
     Arg,
-    Query,
-    FieldResolver,
-    Root,
+    Query
   } from 'type-graphql';
   import { User, UserModel } from '../../entities_m/User';
   import { UserInput } from '../types_m/User-input';
@@ -12,39 +10,28 @@ import {
   @Resolver((_of) => User)
   export class UsersResolver {
     @Query((_returns) => User, { nullable: false })
-    async returnSingleUser(@Arg('id') id: string) {
+    async getUserById(@Arg('id') id: string) {
       return await UserModel.findById({ _id: id });
     }
   
     @Query(() => [User])
-    async returnAllUsers() {
+    async getAllUsers() {
       return await UserModel.find();
     }
   
     @Mutation(() => User)
-    async createUser(
-      @Arg('data') { username, email, cart_id }: UserInput
+    async registerUser(
+      @Arg('data') { firstName, lastName, password, email}: UserInput
     ): Promise<User> {
       const user = (
         await UserModel.create({
-          username,
-          email,
-          cart_id,
+          firstName,
+          lastName,
+          password,
+          email
         })
       ).save();
       return user;
-    }
-  
-    @Mutation(() => Boolean)
-    async deleteUser(@Arg('id') id: string) {
-      await UserModel.deleteOne({ id });
-      return true;
-    }
-  
-    @FieldResolver((_type) => Cart)
-    async cart(@Root() user: User): Promise<Cart> {
-      console.log(user, 'userr!');
-      return (await CartModel.findById(user._doc.cart_id))!;
     }
   }
   
